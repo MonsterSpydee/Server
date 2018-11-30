@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Post',
     'Course_Branch',
     'Server',
+    'rest_framework',
 ]
 
 
