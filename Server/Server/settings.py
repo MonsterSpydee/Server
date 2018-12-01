@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Post',
     'Course_Branch',
     'Server',
+    'FileUpload',
 ]
 
 
@@ -76,6 +77,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Server.wsgi.application'
 
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
