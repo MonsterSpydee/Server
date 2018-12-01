@@ -1,4 +1,4 @@
-from django.contrib import admin
+gfrom django.contrib import admin
 from Points.models import POINTS
 from Post.models import POST, VOTES_STATUS
 from Course_Branch.models import BRANCH, COURSE

@@ -23,4 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('points/', points_views.pointsList.as_view()),
     path('upvote/', post_views.upvoteView.as_view()),
+    path('downvote/', post_views.downvoteView.as_view()),
+    path('numberOfViews/', post_views.numberOfViews.as_view()),
 ]
