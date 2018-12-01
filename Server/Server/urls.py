@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from Points import views
+from Points import views as points_views
+from Post import views as post_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('points/', views.pointsList.as_view()),
+    path('points/', points_views.pointsList.as_view()),
+    path('upvote/', post_views.upvoteView.as_view()),
 ]
