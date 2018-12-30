@@ -36,34 +36,29 @@ class UserLogin(APIView): #Logins the user based on username,password and isStud
 	"""
 	permission_classes = (AllowAny,)
 	def post(self,request,format='json'):
+
 		username = request.data['username']
 		password = request.data['password']
+
 		user = authenticate(username=username, password=password)
+		
+		
 		if user is not None:
 			if user.is_active:
-				print(request.data["isStudent"])
-				if request.data["isStudent"] == 1:
-					student = Student.objects.filter(user=user)
-
-					#print(student)
-					if len(student):
+				if request.data["isAdmin"] == "1":
+					if username == "admin" and password == "admin" :
 						login(request, user)
 						token, created = Token.objects.get_or_create(user=user)
 						js = json.dumps({"status" : "true", "token" : token.key})
 						return Response(js, status=status.HTTP_200_OK)
 					else:
-						js = json.dumps({"status" : "false", "msg" : "Not a valid Student"})
+						js = json.dumps({"status" : "false", "msg" : "Not a valid admin"})
 						return Response(js, status=status.HTTP_400_BAD_REQUEST)
 				else:
-					teacher = Teacher.objects.filter(user=user)
-					if len(teacher):
-						login(request, user)
-						token, created = Token.objects.get_or_create(user=user)
-						js = json.dumps({"status" : "true", "token" : token.key})
-						return Response(js, status=status.HTTP_200_OK)
-					else:
-						js = json.dumps({"status" : "false", "msg" : "Not a valid Teacher"})
-						return Response(js, status=status.HTTP_400_BAD_REQUEST)
+					login(request, user)
+					token, created = Token.objects.get_or_create(user=user)
+					js = json.dumps({"status" : "true", "token" : token.key})
+					return Response(js, status=status.HTTP_200_OK)
 
 				
 			else:

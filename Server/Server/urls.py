@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from Accounts import views as Accounts_Views
 
 urlpatterns = [
+    path('signin/', Accounts_Views.UserLogin.as_view()),
     path('signup/', Accounts_Views.UserCreate.as_view()),
     path('admin/', admin.site.urls),
     path('file/', include('FileUpload.urls')),
