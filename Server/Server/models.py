@@ -6,3 +6,4 @@ class User(AbstractUser):
 	total_downvotes_notes = models.IntegerField(default=0)
 	total_upvotes_assignments = models.IntegerField(default=0)
 	total_downvotes_assignments = models.IntegerField(default=0)
+	branch = models.CharField(max_length=10)

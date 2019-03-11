@@ -19,6 +19,9 @@ class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(min_length=6, max_length=100,
             write_only=True)
 
+    branch = serializers.CharField(min_length=3, max_length=10,
+            write_only=True)
+
     
 
     def create(self, validated_data):
@@ -30,4 +33,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name','last_name','username', 'email', 'password')
+        fields = ('first_name','last_name','username', 'email', 'password', 'branch')

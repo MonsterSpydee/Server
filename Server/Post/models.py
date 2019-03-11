@@ -9,12 +9,12 @@ class POST(models.Model):
 	post_id = models.AutoField(primary_key=True) #AutoIncrement
 	created_At = models.DateTimeField(auto_now_add=True)
 	isNotes = models.BooleanField(default=True)
-	author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='posts', on_delete=models.CASCADE, null=False)
-	course = models.ForeignKey(COURSE, related_name='posts', on_delete=models.CASCADE, null=False)
+	author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='posts', on_delete=models.CASCADE, null=True)
+	course = models.ForeignKey(COURSE, related_name='posts', on_delete=models.CASCADE)
 	num_upvotes = models.IntegerField(default=0)
 	num_downvotes = models.IntegerField(default=0)
 	num_views = models.IntegerField(default=0)
-	content = models.ForeignKey(File, related_name='post', on_delete=models.CASCADE, null=False)
+	content = models.ForeignKey(File, related_name='post', on_delete=models.CASCADE, null=True)
 
 class VOTES_STATUS(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='statuses', on_delete=models.CASCADE, null=False)
