@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from Accounts import views as Accounts_Views
+from Course_Branch import views as Course_Branch_Views
 
 urlpatterns = [
     path('auth/signin/', Accounts_Views.UserLogin.as_view()),
     path('auth/signup/', Accounts_Views.UserCreate.as_view()),
     path('admin/', admin.site.urls),
+    path('addCourse/',Course_Branch_Views.AddCourse.as_view()),
     path('file/', include('FileUpload.urls')),
 ]
 

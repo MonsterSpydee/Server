@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.response import Response
+from rest_framework import status
+import json
+from rest_framework.permissions import AllowAny
 
 # Create your views here.
 class AddCourse(APIView): #Logins the user based on username,password and isStudent field sent from Client Side and returns the corresponding token
@@ -20,7 +25,7 @@ class AddCourse(APIView): #Logins the user based on username,password and isStud
 						branch_name = request["branch"]
 						course_id = request["course_id"]
 						course_name = request["course_name"]
-						branch = BRANCH.objects.get(branch_id=branch_name)
+						branch = BRANCH.objects.get(branch_name=branch_name)
 						course = COURSE.objects.filter(course_id=course_id)
 						if len(course) == 0:
 							course = COURSE.objects.create(course_id=course_id, 
@@ -37,7 +42,7 @@ class AddCourse(APIView): #Logins the user based on username,password and isStud
 						return Response(js, status=status.HTTP_400_BAD_REQUEST)
 				else:
 					#Second Portion Code
-					
+					print("HEYYY")
 
 				
 			else:
